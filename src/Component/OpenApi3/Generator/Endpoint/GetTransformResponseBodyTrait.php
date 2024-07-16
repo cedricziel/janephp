@@ -175,7 +175,7 @@ EOD
         $statements = [];
 
         foreach ($response->getContent() as $contentType => $content) {
-            if (\in_array($contentType, JsonBodyContentGenerator::JSON_TYPES)) {
+            if (\in_array($contentType, JsonBodyContentGenerator::JSON_TYPES) || str_ends_with($contentType, '+json')) {
                 [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,
